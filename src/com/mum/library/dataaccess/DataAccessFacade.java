@@ -57,6 +57,7 @@ public class DataAccessFacade implements DataAccess {
 		try {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR,
 					type.toString());
+
 			in = new ObjectInputStream(Files.newInputStream(path));
 			retVal = in.readObject();
 		} catch (Exception e) {
@@ -73,22 +74,24 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	static {
-		saveToStorage(StorageType.BOOKS, new HashMap<String, Book>());
-		saveToStorage(StorageType.MEMBERS, new HashMap<String, LibraryMember>());
-		saveToStorage(StorageType.USERS, new HashMap<String, User>());
+
 		DataAccess da = new DataAccessFacade();
 		booksMap = da.readBooksMap();
+		usersMap = da.readUserMap();
 		if (booksMap == null) {
+			
 			booksMap = new HashMap<String, Book>();
 		}
 
 		membersMap = da.readMemberMap();
 		if (membersMap == null) {
+			
 			membersMap = new HashMap<String, LibraryMember>();
 		}
 		
-		usersMap = da.readUserMap();
+		
 		if(usersMap==null) {
+			
 			usersMap = new HashMap<String, User>();
 		}
 	}

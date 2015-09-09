@@ -91,7 +91,7 @@ public class initData {
 		member2.checkout(c2, LocalDate.now(), LocalDate.now().plus(14, ChronoUnit.DAYS));
 		member3.checkout(c3, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
 		
-		System.out.println("Location of 'user.dir':\n  "+DataAccessFacade.OUTPUT_DIR);
+		//System.out.println("Location of 'user.dir':\n  "+DataAccessFacade.OUTPUT_DIR);
 		
 		DataAccess da = new DataAccessFacade();
 		da.saveLibraryMember(member1);
