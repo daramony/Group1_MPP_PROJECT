@@ -33,12 +33,54 @@ public class DataAccessFacade implements DataAccess {
 			+ "\\src\\com\\mum\\library\\dataaccess\\storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
+<<<<<<< HEAD
 	public static HashMap<String, Book> booksMap;
 	public static HashMap<String, LibraryMember> membersMap;
 	public static HashMap<String, User> usersMap;
 	
    //access storage	
 	static void saveToStorage(StorageType type, Object ob) {
+=======
+	@Override
+	public void saveData(String name, Object object) {
+		ObjectOutputStream out = null;
+		try {
+			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, name);
+			out = new ObjectOutputStream(Files.newOutputStream(path));
+			out.writeObject(object);
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(out != null) {
+				try {
+					out.close();
+				} catch(Exception e) {}
+			}
+		}
+		
+	}
+	@Override
+	public Object readData(String name) {
+		ObjectInputStream in = null;
+		Object out = null;
+		try {
+			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, name);
+			in = new ObjectInputStream(Files.newInputStream(path));
+			out = in.readObject();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(in != null) {
+				try {
+					in.close();
+				} catch(Exception e) {}
+			}
+		}
+		return out;
+	}
+	
+	public void saveLibraryMember(String name, LibraryMember member) {
+>>>>>>> origin/master
 		ObjectOutputStream out = null;
 		try {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR,
@@ -78,6 +120,7 @@ public class DataAccessFacade implements DataAccess {
 		return retVal;
 	}
 
+<<<<<<< HEAD
 	static {
 		saveToStorage(StorageType.BOOKS, new HashMap<String, Book>());
 		saveToStorage(StorageType.MEMBERS, new HashMap<String, LibraryMember>());
@@ -164,5 +207,8 @@ public class DataAccessFacade implements DataAccess {
 //		}
 //		return member;
 //	}
+=======
+	
+>>>>>>> origin/master
 	
 }
