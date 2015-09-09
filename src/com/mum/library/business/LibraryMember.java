@@ -23,7 +23,7 @@ public class LibraryMember extends Person implements Serializable {
 	}
 	
 	public String toString() {
-		return "Checkout record for library member " + super.getFirstName()+" "+super.getLastName() + ": " + record;
+		return "library member:" + super.getFirstName()+" "+super.getLastName();
 	}
 	
 	public String getMemberID() {

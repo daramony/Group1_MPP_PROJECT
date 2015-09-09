@@ -6,13 +6,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-
-
-
-
-
-
-
+import java.util.List;
 
 import com.mum.library.business.Book;
 import com.mum.library.business.LibraryMember;
@@ -117,6 +111,10 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, LibraryMember>) readFromStorage(StorageType.MEMBERS);
 	}
 	
+	
+
+	
+	
 	//LibraryMember
 	public void saveLibraryMember(LibraryMember member) {
 		membersMap.put(member.getMemberID(), member);
@@ -127,6 +125,29 @@ public class DataAccessFacade implements DataAccess {
 		LibraryMember lm = membersMap.get(memberId);
 		return lm;
 	}
+	
+	//User
+	public void saveSystemUser(User user) {
+		usersMap.put(user.getId(), user);
+		saveToStorage(StorageType.USERS, usersMap);
+	}
+	
+	public User readSystemUser(String userId) {
+		User ur = usersMap.get(userId);
+		return ur;
+	}
+	
+	//Book
+	public void saveBook(Book book) {
+		booksMap.put(book.getIsbn(), book);
+		saveToStorage(StorageType.BOOKS, booksMap);
+	}
+	
+	public Book readBook(String userIsbn) {
+		Book bk = booksMap.get(userIsbn);
+		return bk;
+	}
+	
 	
 	
 //	public void saveLibraryMember(String name, LibraryMember member) {

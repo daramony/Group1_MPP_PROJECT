@@ -16,13 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mum.library.business.Address;
+import com.mum.library.business.Auth;
 import com.mum.library.business.Author;
 import com.mum.library.business.Book;
 import com.mum.library.business.LendableCopy;
 import com.mum.library.business.LibraryMember;
 import com.mum.library.business.Publication;
+import com.mum.library.business.User;
 import com.mum.library.dataaccess.DataAccess;
 import com.mum.library.dataaccess.DataAccessFacade;
+
 
 
 
@@ -62,9 +65,15 @@ public class initData {
 		List<Author> aAuthors = new ArrayList<Author>();
 		aAuthors.add(allAuthors.get(0));
 		aAuthors.add(allAuthors.get(1));
-		Publication p1 = new Book(1, "1234","Gone with the Wind",aAuthors);
-		Publication p2 = new Book(1, "1234","Gone with the Wind",aAuthors);
-		Publication p3 = new Book(1, "1234","Gone with the Wind",aAuthors);
+		Publication p1 = new Book("123","Gone with the Wind",aAuthors);
+		Publication p2 = new Book("456","Headley",aAuthors);
+		Publication p3 = new Book("789","Central",aAuthors);
+		
+		//add users
+		User user1=new User("101", "xyz", Auth.LIBRARIAN);
+		User user2=new User("102", "abc", Auth.ADMIN);
+		User user3=new User("103", "111", Auth.BOTH);
+				
 		
 		LendableCopy c1 = new LendableCopy();
 		c1.setPublication(p1);
@@ -88,11 +97,30 @@ public class initData {
 		da.saveLibraryMember(member1);
 		da.saveLibraryMember(member2);
 		da.saveLibraryMember(member3);
+		da.saveBook((Book)p1);
+		da.saveBook((Book)p2);
+		da.saveBook((Book)p3);
+		da.saveSystemUser(user1);
+		da.saveSystemUser(user2);
+		da.saveSystemUser(user3);
 		
-		System.out.println("Reading record for John:\n"+"  "+da.readLibraryMember("1"));
-		System.out.println("Reading record for Sandra:\n"+"  "+da.readLibraryMember("2"));
-		System.out.println("Reading record for Nirmal:\n"+"  "+da.readLibraryMember("3"));
+		System.out.println("Reading record forLibraryMembers:");
+		System.out.println(da.readLibraryMember("1"));
+		System.out.println(da.readLibraryMember("2"));
+		System.out.println(da.readLibraryMember("3"));
+		System.out.println("****************************************");
 
+		System.out.println("Reading record forBooks:");
+		System.out.println(da.readBook("123"));
+		System.out.println(da.readBook("456"));
+		System.out.println(da.readBook("789"));
+		System.out.println("****************************************");
+				
+		System.out.println("Reading record forUsers:");
+		System.out.println(da.readSystemUser("101"));
+		System.out.println(da.readSystemUser("102"));
+		System.out.println(da.readSystemUser("103"));
+		System.out.println("****************************************");
 	}
 	
 
