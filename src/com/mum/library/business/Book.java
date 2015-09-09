@@ -1,15 +1,18 @@
 package com.mum.library.business;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Book extends Publication implements Serializable {
 	private int id;
 	private String isbn;
 	private boolean available;
-	public Book(int id, String isbn, String title) {
+	private List<Author> authors;
+	public Book(int id, String isbn, String title,List<Author> authors) {
 		super(title);
 		this.id = id;
 		this.isbn = isbn;
+		this.authors=authors;
 	}
 	public void isAvailable(boolean b) {
 		available = b;
