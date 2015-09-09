@@ -1,21 +1,33 @@
 package com.mum.library.business;
 
-import java.io.Serializable;
-
-public class Book extends Publication implements Serializable {
-	private int id;
+public class Book {
 	private String isbn;
-	private boolean available;
-	public Book(int id, String isbn, String title) {
-		super(title);
-		this.id = id;
+	private String title;
+	private int maxCheckoutLength;
+	private int noOfcopies;
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public void isAvailable(boolean b) {
-		available = b;
+	public String getTitle() {
+		return title;
 	}
-	@Override
-	public String toString() {
-		return "id: " + id + ", isbn: " + isbn + ", available: " + available;
+	public void setTitle(String title) {
+		this.title = title;
 	}
+	public int getMaxCheckoutLength() {
+		return maxCheckoutLength;
+	}
+	public void setMaxCheckoutLength(int maxCheckoutLength) {
+		this.maxCheckoutLength = maxCheckoutLength;
+	}
+	public int getNoOfcopies() {
+		return noOfcopies;
+	}
+	public void setNoOfcopies(int noOfcopies) {
+		this.noOfcopies = noOfcopies;
+	}
+	
 }
