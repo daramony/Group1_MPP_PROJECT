@@ -9,6 +9,10 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+
+
+
+import com.mum.library.business.Address;
 import com.mum.library.business.Book;
 import com.mum.library.business.LendableCopy;
 import com.mum.library.business.LibraryMember;
@@ -21,7 +25,8 @@ import com.mum.library.dataaccess.DataAccessFacade;
 public class initData {
 	
 	public static void main(String[] args) {
-		LibraryMember member = new LibraryMember("John");
+		
+		LibraryMember member = new LibraryMember("John", "Thomas", "641-445-2123", new Address("101 S. Main", "Fairfield", "IA", "52556"));
 		Publication p = new Book(1, "1234","Gone with the Wind");
 		LendableCopy c = new LendableCopy();
 		c.setPublication(p);
