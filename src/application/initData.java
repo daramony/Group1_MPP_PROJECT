@@ -65,9 +65,9 @@ public class initData {
 		List<Author> aAuthors = new ArrayList<Author>();
 		aAuthors.add(allAuthors.get(0));
 		aAuthors.add(allAuthors.get(1));
-		Publication p1 = new Book("123","Gone with the Wind",aAuthors);
-		Publication p2 = new Book("456","Headley",aAuthors);
-		Publication p3 = new Book("789","Central",aAuthors);
+		Publication p1 = new Book("123","Gone with the Wind",aAuthors,1);
+		Publication p2 = new Book("456","Headley",aAuthors,2);
+		Publication p3 = new Book("789","Central",aAuthors,1);
 		
 		//add users
 		User user1=new User("101", "xyz", Auth.LIBRARIAN);
@@ -75,15 +75,20 @@ public class initData {
 		User user3=new User("103", "111", Auth.BOTH);
 				
 		
-		LendableCopy c1 = new LendableCopy();
+		LendableCopy c1 = new LendableCopy(p1,1);
 		c1.setPublication(p1);
 		c1.setCopyId(1);
 		
-		LendableCopy c2 = new LendableCopy();
+		LendableCopy c2 = new LendableCopy(p2,1);
 		c2.setPublication(p2);
 		c2.setCopyId(1);
 		
-		LendableCopy c3 = new LendableCopy();
+		LendableCopy c4 = new LendableCopy(p2,2);
+		c4.setPublication(p2);
+		c4.setCopyId(2);
+		
+		
+		LendableCopy c3 = new LendableCopy(p3,1);
 		c3.setPublication(p3);
 		c3.setCopyId(1);
 		

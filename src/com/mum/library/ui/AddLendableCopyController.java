@@ -1,8 +1,10 @@
 package com.mum.library.ui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -79,9 +81,22 @@ public class AddLendableCopyController{
 			//System.out.println("ID " + isbn + " not found");
 			Book book = map.get(isbn);
 			isbnText.setText(book.getIsbn());
-			numberOfCopyText.setText("0");
+			numberOfCopyText.setText(book.getCopiesString());
 		}
     }
+    
+    /*
+     //book.addCopy();
+		DataAccess da = new DataAccessFacade();
+		HashMap<String, Book> map = da.readBooksMap();
+		map.get(isbn).addCopy();
+		List<Book> allBooks = new ArrayList<Book>();
+		for (Book value : map.values()) {
+			allBooks.add(value);
+		}		
+		DataAccessFacade.loadBookMap(allBooks);
+     */
+    
     
     @FXML
     void initialize() {
@@ -108,7 +123,7 @@ public class AddLendableCopyController{
 		bookTableView.setItems(memberData);
 		isbnColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
 		titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
-		numberOfCopyColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("copy"));
+		numberOfCopyColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("copiesNumString"));
 		
     }
 }
