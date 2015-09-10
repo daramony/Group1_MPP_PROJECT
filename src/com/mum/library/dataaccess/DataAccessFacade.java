@@ -78,12 +78,12 @@ public class DataAccessFacade implements DataAccess {
 		DataAccess da = new DataAccessFacade();
 		booksMap = da.readBooksMap();
 		usersMap = da.readUserMap();
+		membersMap=da.readMemberMap();
 		if (booksMap == null) {
 			
 			booksMap = new HashMap<String, Book>();
 		}
 
-		membersMap = da.readMemberMap();
 		if (membersMap == null) {
 			
 			membersMap = new HashMap<String, LibraryMember>();
@@ -151,42 +151,6 @@ public class DataAccessFacade implements DataAccess {
 		return bk;
 	}
 	
-	
-	
-//	public void saveLibraryMember(String name, LibraryMember member) {
-//		ObjectOutputStream out = null;
-//		try {
-//			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, name);
-//			out = new ObjectOutputStream(Files.newOutputStream(path));
-//			out.writeObject(member);
-//		} catch(IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			if(out != null) {
-//				try {
-//					out.close();
-//				} catch(Exception e) {}
-//			}
-//		}
-//	}
-//	
-//	public LibraryMember readLibraryMember(String name) {
-//		ObjectInputStream in = null;
-//		LibraryMember member = null;
-//		try {
-//			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, name);
-//			in = new ObjectInputStream(Files.newInputStream(path));
-//			member = (LibraryMember)in.readObject();
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			if(in != null) {
-//				try {
-//					in.close();
-//				} catch(Exception e) {}
-//			}
-//		}
-//		return member;
-//	}
+
 	
 }
