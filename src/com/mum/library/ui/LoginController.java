@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.mum.library.business.User;
 import com.mum.library.dataaccess.DataAccess;
 import com.mum.library.dataaccess.DataAccessFacade;
 
@@ -50,29 +49,33 @@ public class LoginController {
     	DataAccess da=new DataAccessFacade();
     	
     	if (da.readUserMap().get(username)!=null&&da.readUserMap().get(username).getPassword().equals(password)) {
-    		try {
-    			
-    			Alert alert = new Alert(AlertType.INFORMATION);
-    			alert.setTitle("Library System");
-    			alert.setHeaderText(null);
-    			alert.setContentText("WELCOME "+username+"!");
-    			alert.showAndWait();
-    			
+    		try {   			
     	    	Stage stage = new Stage();
     	    				Window window = header.getScene().getWindow();
     	    				if (window instanceof Stage) {
     	    					((Stage) window).close();
-    	    				}
-    	    		Parent root = FXMLLoader.load(getClass().getResource("MainFrame.fxml"));
-    	    		stage.setTitle("Library System");
+    	    				}   	   
+    	    		
+    				FXMLLoader loader = new FXMLLoader(getClass().getResource(
+    						"MainFrame.fxml"));
+    				
+    				Parent root = loader.load();
+    	    		
+    	    		// Passing Username from login window to Mainframe window
+    				MainFrameController controller = loader.<MainFrameController> getController();
+    				controller.initData(username, da.readUserMap().get(username).getAuthorization().name());
+    				controller.RoleFuction(da.readUserMap().get(username));
+    				
+    				stage.setTitle("Library System");
     	    		Scene scene = new Scene(root);
     	    		stage.setScene(scene);
-    	    		stage.show();    		
-    	    		
+    	    		stage.show();
     	    	} catch (IOException e) {
     				e.printStackTrace();
     			}
 		}else {
+			TxtUsername.setText("");
+			TxtPassword.setText("");
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Library System");
 			alert.setHeaderText(null);

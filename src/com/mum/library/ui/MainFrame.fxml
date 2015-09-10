@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="header" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mum.library.ui.MainFrameController">
    <children>
       <AnchorPane prefHeight="71.0" prefWidth="745.0">
          <children>
@@ -18,23 +17,23 @@
             </Label>
             <Label layoutX="410.0" layoutY="25.0" text="User ID:" />
             <Label layoutX="621.0" layoutY="25.0" text="Role:" />
-            <Text layoutX="693.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
-            <Text layoutX="495.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
+            <Text fx:id="TxtRole" layoutX="693.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
+            <Text fx:id="TxtUserID" layoutX="495.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
          </children>
       </AnchorPane>
-      <SplitPane dividerPositions="0.30952380952380953" prefHeight="500.0" prefWidth="800.0">
+      <SplitPane dividerPositions="0.2932330827067669" prefHeight="500.0" prefWidth="800.0">
          <items>
-            <VBox prefHeight="497.0" prefWidth="386.0">
+            <VBox fx:id="butionsControl" prefHeight="497.0" prefWidth="386.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" text="Add new library member" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="257.0" text="View all library members" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="267.0" text="Add a copy of existing book" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="257.0" text="Checkout a book" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="259.0" text="Print Checkout Record" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="283.0" text="Log out" />
+                  <Button fx:id="addMem" mnemonicParsing="false" onAction="#OpenAddMemWin" prefHeight="30.0" prefWidth="260.0" text="Add new library member" />
+                  <Button fx:id="CheckOutBook" mnemonicParsing="false" onAction="#OpenCheckOutBookWin" prefHeight="30.0" prefWidth="257.0" text="Checkout a book" />
+                  <Button fx:id="addCopy" mnemonicParsing="false" onAction="#OpenAddCopyWin" prefHeight="30.0" prefWidth="267.0" text="Add a copy of existing book" />
+                  <Button fx:id="AddBook" mnemonicParsing="false" onAction="#OpenAddBookWin" prefHeight="30.0" prefWidth="257.0" text="Add a book to the library" />
+                  <Button fx:id="PrintCheckoutRecord" mnemonicParsing="false" onAction="#OpenPrintCheckoutRecordWin" prefHeight="30.0" prefWidth="259.0" text="Print Checkout Record" />
+                  <Button fx:id="Logout" mnemonicParsing="false" onAction="#BackLoginWin" prefHeight="30.0" prefWidth="283.0" text="Log out" />
                </children>
             </VBox>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="FunctionPane" prefHeight="200.0" prefWidth="200.0" />
          </items>
       </SplitPane>
    </children>
