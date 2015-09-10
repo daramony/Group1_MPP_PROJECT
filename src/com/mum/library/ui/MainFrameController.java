@@ -77,7 +77,7 @@ public class MainFrameController {
     void OpenCheckOutBookWin(ActionEvent event) {
     	try {
     	  	
-    	  Parent openaddcopy = FXMLLoader.load(getClass().getResource("CheckOutBookForm.fxml"));
+    		Parent openaddcopy = FXMLLoader.load(getClass().getResource("CheckOutBookWin.fxml"));
     	
           FunctionPane.getChildren().clear();
           FunctionPane.getChildren().add(openaddcopy);

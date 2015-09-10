@@ -92,7 +92,7 @@ public class AddBookController {
 				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAddress().getState()));
 		bookAuthorZip
 				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAddress().getZip()));
-		bookAuthorPhoneNo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhoneNo()));
+		bookAuthorPhoneNo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelephone()));
 		bookAuthorShortBio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShortBio()));
 
 	}
@@ -116,12 +116,12 @@ public class AddBookController {
 				authorList);
 		DataAccessFacade dataAccessFacade = new DataAccessFacade();
 		dataAccessFacade.saveBook(book);
+		clearBookData();
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Added SuccessFull");
 		alert.setHeaderText(null);
 		alert.setContentText("Book has been added SuccessFully");
 		alert.showAndWait();
-		clearBookData();
 	}
 
 	private void clearBookData() {
@@ -130,7 +130,6 @@ public class AddBookController {
 		txtBookTitle.clear();
 		txtISBN.clear();
 		txtBookMaxLendDays.clear();
-		txtBookNoCopies.clear();
 		bookAuthor.clear();
 		tblBookList.setItems(bookAuthor);
 

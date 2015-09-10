@@ -48,11 +48,11 @@ public class initData {
 		
 		List<Author> allAuthors = new ArrayList<Author>() {
 			{
-				add(new Author("Joe", "Thomas", "641-445-2123", "13455",addresses.get(0), "Author of Java."));
-				add(new Author("Sandra", "Thomas", "641-445-2123","12678",  addresses.get(0), "Author of Phython"));
-				add(new Author("Nirmal", "Pugh", "641-919-3223", "345789",addresses.get(1), "Thinker of thoughts."));
-				add(new Author("Andrew", "Cleveland", "976-445-2232","35565879", addresses.get(2), "Author of childrens' books."));
-				add(new Author("Sarah", "Connor", "123-422-2663", "655444",addresses.get(3), "Author of HTML."));
+				add(new Author("Joe", "Thomas", "641-445-2123", addresses.get(0), "A happy man is he."));
+				add(new Author("Sandra", "Thomas", "641-445-2123", addresses.get(0), "A happy wife is she."));
+				add(new Author("Nirmal", "Pugh", "641-919-3223", addresses.get(1), "Thinker of thoughts."));
+				add(new Author("Andrew", "Cleveland", "976-445-2232", addresses.get(2), "Author of childrens' books."));
+				add(new Author("Sarah", "Connor", "123-422-2663", addresses.get(3), "Known for her clever style."));
 			}
 		};
 			
@@ -65,9 +65,9 @@ public class initData {
 		List<Author> aAuthors = new ArrayList<Author>();
 		aAuthors.add(allAuthors.get(0));
 		aAuthors.add(allAuthors.get(1));
-		Publication p1 = new Book("121-24423-234","Java",7,1,aAuthors);
-		Publication p2 = new Book("244-4535-234","Phyton",21,1,aAuthors);
-		Publication p3 = new Book("222-444-444","HTML",7,1,aAuthors);
+		Publication p1 = new Book("123","Gone with the Wind",aAuthors,1);
+		Publication p2 = new Book("456","Headley",aAuthors,2);
+		Publication p3 = new Book("789","Central",aAuthors,1);
 		
 		//add users
 		User user1=new User("101", "xyz", Auth.LIBRARIAN);
