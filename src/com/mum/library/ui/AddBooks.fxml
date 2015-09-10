@@ -23,6 +23,8 @@
 						<TextField fx:id="txtBookTitle" prefHeight="25.0" prefWidth="157.0" promptText="Title" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 						<Label text="Maximum Checkout Length" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
 						<TextField fx:id="txtBookMaxLendDays" prefHeight="25.0" prefWidth="151.0" promptText="Max Checkout Length" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="No of Copies" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtBookNoCopies" prefHeight="25.0" prefWidth="151.0" promptText="NoOfCopies" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 					</children>
 					<columnConstraints>
 						<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="157.0" />
@@ -32,6 +34,7 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 				</GridPane>
 				<TableView fx:id="tblBookList" layoutX="7.0" layoutY="206.0" prefHeight="158.0" prefWidth="777.0">

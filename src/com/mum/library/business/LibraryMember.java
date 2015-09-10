@@ -11,6 +11,23 @@ public class LibraryMember extends Person implements Serializable {
 	private String memberID;
 	private CheckoutRecord record = new CheckoutRecord();
 	
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
+	}
+
+	public void setRecord(CheckoutRecord record) {
+		this.record = record;
+	}
+
+	public CheckoutRecord getRecord() {
+		return record;
+	}
+
 	public LibraryMember(String firstname, String lastname, String tel, Address a,String memberId) {
 		super(firstname, lastname, tel, a);
 		this.memberID=memberId;
