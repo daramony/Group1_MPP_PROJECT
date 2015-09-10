@@ -17,7 +17,7 @@
       <Button layoutX="336.0" layoutY="72.0" mnemonicParsing="false" onAction="#searchClick" text="Search" />
       <Label layoutX="34.0" layoutY="79.0" text="ISBN" />
       <Label layoutX="34.0" layoutY="127.0" text="Number of Copy" />
-      <Button layoutX="336.0" layoutY="120.0" mnemonicParsing="false" text="Update" />
+      <Button layoutX="336.0" layoutY="120.0" mnemonicParsing="false" onAction="#addCopy" text="Add" />
       <TextField fx:id="numberOfCopyText" layoutX="155.0" layoutY="122.0" />
       <TableView fx:id="bookTableView" layoutX="34.0" layoutY="172.0" onMouseClicked="#myRowClick" prefHeight="272.0" prefWidth="428.0">
         <columns>

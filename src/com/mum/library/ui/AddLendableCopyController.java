@@ -16,12 +16,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import com.mum.library.business.*;
 
-
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -58,14 +59,13 @@ public class AddLendableCopyController{
     void searchClick(ActionEvent event) throws Exception {
     	
     	String isbn = isbnText.getText();
+    	if (isbn.isEmpty()) return;
     	
-    	DataAccess data = new DataAccessFacade();
-    	HashMap<String, Book> map = data.readBooksMap();
+    	Book book = searchBook(isbn);
     	
-    	if (map.containsKey(isbn)) {
-			//Book book = map.get(isbn);
-		}
-    	System.out.println("search");
+    	if (book.getIsbn().isEmpty()) {
+    		showAlert("ISBN book not found!");
+    	}
     }
     
     
@@ -81,12 +81,42 @@ public class AddLendableCopyController{
 			//System.out.println("ID " + isbn + " not found");
 			Book book = map.get(isbn);
 			isbnText.setText(book.getIsbn());
-			numberOfCopyText.setText(book.getCopiesString());
+			numberOfCopyText.setText("1");
 		}
     }
     
-    /*
-     //book.addCopy();
+    @FXML
+    void addCopy(ActionEvent event) throws Exception {
+    	
+    	String isbn = isbnText.getText();
+    	int numberOfCopy = Integer.parseInt(numberOfCopyText.getText());
+    	
+    	if (isbn.isEmpty() || numberOfCopyText.getText().isEmpty())
+			throw new Exception("All the fields is required!");
+    	
+    	for (int i=0; i<numberOfCopy; i++) {
+    		addCopyBook(isbn);
+    	}
+    	
+    	showAlert("This copy of book is added successfully to system");
+		
+    }
+    
+    
+    void showAlert(String s) {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(s);
+		alert.setTitle("Library System");
+		alert.setHeaderText(null);
+		alert.showAndWait();
+    }
+    
+    boolean addCopyBook(String isbn) throws Exception {
+    	Book book = searchBook(isbn);
+		if (book == null || isbn == "" || numberOfCopyText.getText() == "")
+			throw new Exception("No book with isbn " + isbn
+					+ " is in the library collection!");
+		
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, Book> map = da.readBooksMap();
 		map.get(isbn).addCopy();
@@ -94,9 +124,30 @@ public class AddLendableCopyController{
 		for (Book value : map.values()) {
 			allBooks.add(value);
 		}		
-		DataAccessFacade.loadBookMap(allBooks);
-     */
+		DataAccessFacade.saveBookMap(allBooks);
+		clearForm();
+		loadTableData();
+		
+		return true;
+    }
     
+    
+    void clearForm() {
+    	isbnText.clear();
+    	numberOfCopyText.clear();
+    }
+    
+    Book searchBook(String isbn) throws Exception {
+    	DataAccess data = new DataAccessFacade();
+    	HashMap<String, Book> map = data.readBooksMap();
+    	
+    	if (map.containsKey(isbn)) {
+			Book book = map.get(isbn);
+			return book;
+		}else {
+			throw new Exception("No book found!");
+		}
+    }
     
     @FXML
     void initialize() {

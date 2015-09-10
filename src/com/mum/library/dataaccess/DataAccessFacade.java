@@ -23,13 +23,20 @@ public class DataAccessFacade implements DataAccess {
 	}
 	
 	
-	public static final String OUTPUT_DIR = System.getProperty("user.dir") 
-			+ "\\src\\com\\mum\\library\\dataaccess\\storage";
+	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "\\src\\com\\mum\\library\\dataaccess\\storage";
+	//public static final String OUTPUT_DIR = System.getProperty("user.dir") + "//src//com//mum//library//dataaccess//storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
 	public static HashMap<String, Book> booksMap;
 	public static HashMap<String, LibraryMember> membersMap;
 	public static HashMap<String, User> usersMap;
+	
+	
+	public static void saveBookMap(List<Book> bookList) {
+		HashMap<String, Book> books = new HashMap<String, Book>();
+		bookList.forEach(book -> books.put(book.getIsbn(), book));
+		saveToStorage(StorageType.BOOKS, books);
+	}
 	
    //access storage	
 	static void saveToStorage(StorageType type, Object ob) {
