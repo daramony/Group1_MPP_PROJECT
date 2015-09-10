@@ -14,5 +14,13 @@ public class LendableCopy implements Serializable {
 	public String toString() {
 		return publication.toString();
 	}
+	public Publication getPublication() {
+		return publication;
+	}
+	public int getCopyId() {
+		return copyId;
+	}
+	
+	
 	
 }

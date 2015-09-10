@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="467.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="467.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mum.library.ui.PrintCheckoutCntroller">
    <children>
       <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="522.0" prefWidth="513.0">
          <children>
             <ScrollPane layoutX="8.0" layoutY="154.0" prefHeight="368.0" prefWidth="498.0">
                <content>
-                  <TableView prefHeight="372.0" prefWidth="504.0">
+                  <TableView fx:id="ShowCheckState" prefHeight="372.0" prefWidth="504.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="CheckOutBookTitle" prefWidth="94.0" text="Book Title" />
+                      <TableColumn fx:id="CheckOutCopyNums" prefWidth="121.0" text="Copy Number" />
+                        <TableColumn fx:id="CheckoutDate" minWidth="0.0" prefWidth="118.0" text="Checkout Date" />
+                        <TableColumn fx:id="DueDate" minWidth="0.0" prefWidth="129.0" text="Due Date" />
                     </columns>
                   </TableView>
                </content>
@@ -36,9 +39,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="197.0" text="PrintCheckout Record" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="249.0" text="Print" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="124.0" text="sucessed!" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="197.0" text="Please Input Member ID:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <Button fx:id="Print" mnemonicParsing="false" onAction="#DoPrint" prefHeight="30.0" prefWidth="249.0" text="Print" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                  <Label fx:id="showState" alignment="CENTER" prefHeight="20.0" prefWidth="124.0" text="Checkout Table" textFill="#0622d1" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextArea fx:id="TxtMemID" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
