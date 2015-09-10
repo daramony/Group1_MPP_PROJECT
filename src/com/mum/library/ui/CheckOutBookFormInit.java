@@ -103,7 +103,7 @@ public class CheckOutBookFormInit {
 	}
 	public Book searchBook(String isbn){
 		DataAccess da=new DataAccessFacade();
-	
+	//	da.readBooksMap();
 		Book b = da.readBook(isbn);
 		return b;
 		
@@ -114,7 +114,10 @@ public class CheckOutBookFormInit {
 	}
     public void checkoutBook(String memberId, String isbn)  {
     	
+    	DataAccess da=new DataAccessFacade();
+    	
 		LibraryMember m = searchMember(memberId);
+		
 		Book b = searchBook(isbn);
 		
 		if(m == null){
@@ -135,7 +138,25 @@ public class CheckOutBookFormInit {
 			return;
 		} 
 		
+		HashMap<String, Book> map = da.readBooksMap();
+		if(map.size()==0) {
+			
 		
+		}
+		if (map.get(isbn).getCopysize()<=0){
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Book");
+			alert.setHeaderText(null);
+			alert.setContentText("No Book available for checkout");
+			alert.showAndWait();
+		}
+		
+		map.get(isbn).removeCopy();
+		List<Book> allBooks = new ArrayList<Book>();
+		for (Book value : map.values()) {
+			allBooks.add(value);
+		}		
+		DataAccessFacade.saveBookMap(allBooks);
 		
 //		DataAccess da = new DataAccessFacade();
 //		HashMap<String, Book> map = da.readBooksMap();
@@ -146,7 +167,11 @@ public class CheckOutBookFormInit {
 //		}		
 //		DataAccessFacade.saveBookMap(allBooks);
 		
-
+		m = searchMember(memberId);
+		
+//		CheckoutRecordEntry entry = new CheckoutRecordEntry(copy, checkoutDate, dueDate);
+//		record.addEntry(entry);
+		
 		List<CheckoutRecordEntry> recordEntries=new ArrayList<CheckoutRecordEntry>();
     	recordEntries=m.getRecord().getEntries();
     	setBookTable(recordEntries);
