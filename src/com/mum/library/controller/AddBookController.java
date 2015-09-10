@@ -116,12 +116,12 @@ public class AddBookController {
 				authorList);
 		DataAccessFacade dataAccessFacade = new DataAccessFacade();
 		dataAccessFacade.saveBook(book);
-		clearBookData();
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Added SuccessFull");
 		alert.setHeaderText(null);
 		alert.setContentText("Book has been added SuccessFully");
 		alert.showAndWait();
+		clearBookData();
 	}
 
 	private void clearBookData() {
@@ -129,6 +129,7 @@ public class AddBookController {
 		clearAuthorData();
 		txtBookTitle.clear();
 		txtISBN.clear();
+		txtBookNoCopies.clear();
 		txtBookMaxLendDays.clear();
 		bookAuthor.clear();
 		tblBookList.setItems(bookAuthor);
