@@ -28,9 +28,7 @@ public class LendableCopy implements Serializable {
 	public Publication getPublication() {
 		return publication;
 	}
-	public int getCopyId() {
-		return copyId;
-	}
+
 	
 	
 	
