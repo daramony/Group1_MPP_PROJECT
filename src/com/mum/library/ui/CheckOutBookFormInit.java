@@ -176,7 +176,11 @@ public class CheckOutBookFormInit {
     	recordEntries=m.getRecord().getEntries();
     	setBookTable(recordEntries);
 		
-    	
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Book");
+		alert.setHeaderText("");
+		alert.setContentText("Book checkouted Successfully!");
+		alert.showAndWait();
     	
 			
 //			LendableCopy cb = b.getNextAvailableCopy();
