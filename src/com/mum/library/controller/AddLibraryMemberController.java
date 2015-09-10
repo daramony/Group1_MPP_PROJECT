@@ -76,12 +76,12 @@ public class AddLibraryMemberController {
 				address, memberaid.getText());
 		DataAccessFacade dataAccessFacade = new DataAccessFacade();
 		dataAccessFacade.saveLibraryMember(libraryMember);
-		clearMemberData();
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Added SuccessFull");
 		alert.setHeaderText(null);
 		alert.setContentText("Library Member has been added SuccessFully");
 		alert.showAndWait();
+		clearMemberData();
 	}
 	public void clearMemberData(){
 		fnameid.clear();

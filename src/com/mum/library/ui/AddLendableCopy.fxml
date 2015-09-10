@@ -13,12 +13,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="isbnText" layoutX="155.0" layoutY="74.0" />
+      <TextField fx:id="isbnText" layoutX="155.0" layoutY="74.0" promptText="ISBN" />
       <Button layoutX="336.0" layoutY="72.0" mnemonicParsing="false" onAction="#searchClick" text="Search" />
       <Label layoutX="34.0" layoutY="79.0" text="ISBN" />
       <Label layoutX="34.0" layoutY="148.0" text="Number of Copy" />
       <Button layoutX="336.0" layoutY="141.0" mnemonicParsing="false" onAction="#addCopy" text="Add" />
-      <TextField fx:id="numberOfCopyText" layoutX="155.0" layoutY="143.0" />
+      <TextField fx:id="numberOfCopyText" layoutX="155.0" layoutY="143.0" promptText="Number of Copy" />
       <TableView fx:id="bookTableView" layoutX="34.0" layoutY="189.0" onMouseClicked="#myRowClick" prefHeight="255.0" prefWidth="428.0">
         <columns>
           <TableColumn fx:id="isbnColumn" prefWidth="75.0" text="ISBN" />
