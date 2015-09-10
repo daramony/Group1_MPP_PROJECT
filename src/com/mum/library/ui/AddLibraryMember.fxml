@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane id="adminCBID" alignment="center" hgap="10" prefHeight="453.0" prefWidth="320.0" styleClass="root" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mum.library.controller.AddLibraryMemberController">
+  <padding><Insets bottom="10" left="25" right="25" top="25" /></padding>
+   <children>
+
+     <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+     <TextField fx:id="fnameid" GridPane.columnIndex="1" />
+
+     <Label text="Member ID" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+
+     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+     <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Label />
+      <Label text="First Name:" />
+      <TextField fx:id="lastnameaid" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="memberaid" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button onAction="#handleSubmitButtonAction" text="Add Member" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+      <Label text="Street" GridPane.rowIndex="5" />
+      <TextField id="addressID" fx:id="addressaid" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Label GridPane.rowIndex="7" />
+      <TextField id="stateID" fx:id="stateaid" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Label text="State" GridPane.rowIndex="7" />
+      <Label text="Zip Code" GridPane.rowIndex="10" />
+      <TextField fx:id="zipcodeaid" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Label text="Phone No" GridPane.rowIndex="11" />
+      <TextField id="cellNoID" fx:id="cellnoaid" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <Label text="City" GridPane.rowIndex="6" />
+      <TextField fx:id="cityid" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+   </children>
+
+</GridPane>
