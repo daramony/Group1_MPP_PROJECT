@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -33,7 +34,19 @@
                   <Button fx:id="Logout" mnemonicParsing="false" onAction="#BackLoginWin" prefHeight="30.0" prefWidth="283.0" text="Log out" />
                </children>
             </VBox>
-            <Pane fx:id="FunctionPane" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="FunctionPane" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="497.0" fitWidth="560.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../application/library.JPG" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="212.0" layoutY="32.0" text="Welcome" textFill="#517aff">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </items>
       </SplitPane>
    </children>
