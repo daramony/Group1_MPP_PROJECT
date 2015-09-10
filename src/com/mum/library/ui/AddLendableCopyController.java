@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -51,6 +52,9 @@ public class AddLendableCopyController{
 
     @FXML
     private TableColumn<Book, String> numberOfCopyColumn;
+    
+    @FXML
+    private Label titleLabel;
 
     private ObservableList<Book> memberData;
     
@@ -65,6 +69,9 @@ public class AddLendableCopyController{
     	
     	if (book.getIsbn().isEmpty()) {
     		showAlert("ISBN book not found!");
+    	}else {
+    		titleLabel.setText(book.getTitle());
+    		numberOfCopyText.setText("1");
     	}
     }
     
@@ -81,6 +88,7 @@ public class AddLendableCopyController{
 			//System.out.println("ID " + isbn + " not found");
 			Book book = map.get(isbn);
 			isbnText.setText(book.getIsbn());
+			titleLabel.setText(book.getTitle());
 			numberOfCopyText.setText("1");
 		}
     }
@@ -135,6 +143,7 @@ public class AddLendableCopyController{
     void clearForm() {
     	isbnText.clear();
     	numberOfCopyText.clear();
+    	titleLabel.setText("");
     }
     
     Book searchBook(String isbn) throws Exception {
@@ -145,6 +154,7 @@ public class AddLendableCopyController{
 			Book book = map.get(isbn);
 			return book;
 		}else {
+			showAlert("Book not found!");
 			throw new Exception("No book found!");
 		}
     }
