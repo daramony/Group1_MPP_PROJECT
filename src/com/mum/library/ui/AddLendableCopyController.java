@@ -63,16 +63,22 @@ public class AddLendableCopyController{
     void searchClick(ActionEvent event) throws Exception {
     	
     	String isbn = isbnText.getText();
-    	if (isbn.isEmpty()) return;
-    	
-    	Book book = searchBook(isbn);
-    	
-    	if (book.getIsbn().isEmpty()) {
-    		showAlert("ISBN book not found!");
+    	if (!isbn.isEmpty()) {
+    		
+    		if (isBookExist(isbn)) {
+    			Book book = searchBook(isbn);
+            	
+        		titleLabel.setText(book.getTitle());
+        		numberOfCopyText.setText("1");
+        	
+    		}else {
+    			showAlert("ISBN book not found!");
+    		}
+    		
     	}else {
-    		titleLabel.setText(book.getTitle());
-    		numberOfCopyText.setText("1");
+    		showAlert("Please input ISBN.");
     	}
+    	
     }
     
     
@@ -97,17 +103,27 @@ public class AddLendableCopyController{
     void addCopy(ActionEvent event) throws Exception {
     	
     	String isbn = isbnText.getText();
-    	int numberOfCopy = Integer.parseInt(numberOfCopyText.getText());
+    	String numberOfCopyString = numberOfCopyText.getText();
     	
-    	if (isbn.isEmpty() || numberOfCopyText.getText().isEmpty())
-			throw new Exception("All the fields is required!");
-    	
-    	for (int i=0; i<numberOfCopy; i++) {
-    		addCopyBook(isbn);
+    	if (!isbn.isEmpty() && !numberOfCopyString.isEmpty()) 
+    	{
+    		if (isBookExist(isbn)) {
+    			if (isbn.isEmpty() || numberOfCopyText.getText().isEmpty())
+        			throw new Exception("All the fields is required!");
+            	
+            	int numberOfCopy = Integer.parseInt(numberOfCopyString);
+            	for (int i=0; i<numberOfCopy; i++) {
+            		addCopyBook(isbn);
+            	}
+            	
+            	showAlert("This copy of book is added successfully to system");
+    		}else {
+    			showAlert("No book found!");
+    		}
+    		
+    	}else {
+    		showAlert("Please input all the required fields!");
     	}
-    	
-    	showAlert("This copy of book is added successfully to system");
-		
     }
     
     
@@ -120,6 +136,7 @@ public class AddLendableCopyController{
     }
     
     boolean addCopyBook(String isbn) throws Exception {
+    	
     	Book book = searchBook(isbn);
 		if (book == null || isbn == "" || numberOfCopyText.getText() == "")
 			throw new Exception("No book with isbn " + isbn
@@ -144,6 +161,17 @@ public class AddLendableCopyController{
     	isbnText.clear();
     	numberOfCopyText.clear();
     	titleLabel.setText("");
+    }
+    
+    boolean isBookExist(String isbn) {
+    	DataAccess data = new DataAccessFacade();
+    	HashMap<String, Book> map = data.readBooksMap();
+    	
+    	if (!map.containsKey(isbn)) {
+			return false;
+		}
+    	
+    	return true;
     }
     
     Book searchBook(String isbn) throws Exception {
