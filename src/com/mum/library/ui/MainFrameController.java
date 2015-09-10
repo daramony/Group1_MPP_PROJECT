@@ -64,7 +64,7 @@ public class MainFrameController {
     void OpenAddMemWin(ActionEvent event) {
         try {
     	  	
-    		Parent openaddcopy = FXMLLoader.load(getClass().getResource("AddMemWin.fxml"));
+    		Parent openaddcopy = FXMLLoader.load(getClass().getResource("AddLibraryMember.fxml"));
     	
           FunctionPane.getChildren().clear();
           FunctionPane.getChildren().add(openaddcopy);
@@ -103,7 +103,7 @@ public class MainFrameController {
     void OpenAddBookWin(ActionEvent event) {
     	try {
     	  	
-    		Parent openaddcopy = FXMLLoader.load(getClass().getResource("AddBookWin.fxml"));
+    		Parent openaddcopy = FXMLLoader.load(getClass().getResource("AddBooks.fxml"));
     	
           FunctionPane.getChildren().clear();
           FunctionPane.getChildren().add(openaddcopy);
