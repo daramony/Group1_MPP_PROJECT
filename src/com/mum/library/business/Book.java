@@ -69,7 +69,13 @@ public class Book extends Publication implements Serializable {
 		copies.add(copy);
 	}
 
-
+	public void removeCopy() {
+		LendableCopy copy = new LendableCopy(this, this.copies.size()-1);
+		copies.remove(copies.size()-1);
+	}
+	public int getCopysize() {
+		return copies.size();
+	}
 	public String getIsbn() {
 		return isbn;
 	}
