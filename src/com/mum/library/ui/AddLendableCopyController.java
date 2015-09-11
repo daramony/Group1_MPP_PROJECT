@@ -84,7 +84,6 @@ public class AddLendableCopyController{
     
     @FXML 
     void myRowClick(MouseEvent event) {
-    	System.out.println("Select" + bookTableView.getSelectionModel().getSelectedIndex());
     	
     	String isbn = bookData.get(bookTableView.getSelectionModel().getSelectedIndex()).getIsbn();
     	DataAccess data = new DataAccessFacade();
