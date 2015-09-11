@@ -25,7 +25,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFPuNjGMOn2Ihs="
 							},
-							"name": "SequenceDiagramLendableCopy",
+							"name": "LendableCopySequenceDiagram",
 							"visible": true,
 							"defaultDiagram": true,
 							"ownedViews": [
@@ -60,7 +60,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "SequenceDiagramLendableCopy",
+											"text": "LendableCopySequenceDiagram",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -1098,9 +1098,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 293,
+											"left": 338,
 											"top": 188,
-											"width": 169,
+											"width": 78,
 											"height": 13,
 											"autoResize": false,
 											"alpha": 1.5707963267948966,
@@ -1110,7 +1110,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "2 : addCopy(book, numCopy)",
+											"text": "2 : addCopy()",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -3304,7 +3304,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFPuNjGMOn2Ihs="
 							},
-							"name": "addCopy(book, numCopy)",
+							"name": "addCopy()",
 							"source": {
 								"$ref": "AAAAAAFPuNoE5upRR5U="
 							},
