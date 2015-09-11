@@ -18,8 +18,8 @@
             </Label>
             <Label layoutX="410.0" layoutY="25.0" text="User ID:" />
             <Label layoutX="621.0" layoutY="25.0" text="Role:" />
-            <Text fx:id="TxtRole" layoutX="693.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
-            <Text fx:id="TxtUserID" layoutX="495.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
+            <Text fx:id="TxtRole" layoutX="677.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
+            <Text fx:id="TxtUserID" layoutX="495.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
          </children>
       </AnchorPane>
       <SplitPane dividerPositions="0.2932330827067669" prefHeight="500.0" prefWidth="800.0">
