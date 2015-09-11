@@ -60,14 +60,16 @@ public class initData {
 		LibraryMember member1 = new LibraryMember("John", "Pugh", "641-445-2123", addresses.get(0),"1");
 		LibraryMember member2 = new LibraryMember("Sandra", "Cleveland", "976-445-2232", addresses.get(1),"2");
 		LibraryMember member3 = new LibraryMember("Nirmal", "Thomas", "123-422-2663", addresses.get(2),"3");
+		LibraryMember member4 = new LibraryMember("Nirmal", "Andrew", "156-422-2953", addresses.get(2),"4");
 		
 		//add books
 		List<Author> aAuthors = new ArrayList<Author>();
 		aAuthors.add(allAuthors.get(0));
 		aAuthors.add(allAuthors.get(1));
-		Publication p1 = new Book("123","Gone with the Wind",14,1,aAuthors);
-		Publication p2 = new Book("456","Headley",30,2,aAuthors);
-		Publication p3 = new Book("789","Central",30,1,aAuthors);
+		Publication p1 = new Book("123","Gone with the Wind",14,3,aAuthors);
+		Publication p2 = new Book("456","Headley",30,3,aAuthors);
+		Publication p3 = new Book("789","Big Data",30,1,aAuthors);
+		Publication p4 = new Book("000","Thinking Java",30,1,aAuthors);
 		
 		//add users
 		User user1=new User("101", "xyz", Auth.LIBRARIAN);
@@ -82,10 +84,10 @@ public class initData {
 		LendableCopy c5 = new LendableCopy(p1,2);
 			
 		member1.checkout(c1, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
-		member1.checkout(c4, LocalDate.now(), LocalDate.now().plus(10, ChronoUnit.DAYS));
-		member2.checkout(c2, LocalDate.now(), LocalDate.now().plus(14, ChronoUnit.DAYS));
+		member2.checkout(c4, LocalDate.now(), LocalDate.now().plus(10, ChronoUnit.DAYS));
+		member3.checkout(c2, LocalDate.now(), LocalDate.now().plus(14, ChronoUnit.DAYS));
 		member3.checkout(c3, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
-		member3.checkout(c5, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
+		member4.checkout(c5, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
 		
 		//System.out.println("Location of 'user.dir':\n  "+DataAccessFacade.OUTPUT_DIR);
 		
@@ -93,9 +95,11 @@ public class initData {
 		da.saveLibraryMember(member1);
 		da.saveLibraryMember(member2);
 		da.saveLibraryMember(member3);
+		da.saveLibraryMember(member4);
 		da.saveBook((Book)p1);
 		da.saveBook((Book)p2);
 		da.saveBook((Book)p3);
+		da.saveBook((Book)p4);
 		da.saveSystemUser(user1);
 		da.saveSystemUser(user2);
 		da.saveSystemUser(user3);
@@ -104,12 +108,14 @@ public class initData {
 		System.out.println(da.readLibraryMember("1"));
 		System.out.println(da.readLibraryMember("2"));
 		System.out.println(da.readLibraryMember("3"));
+		System.out.println(da.readLibraryMember("4"));
 		System.out.println("****************************************");
 
 		System.out.println("Reading record forBooks:");
 		System.out.println(da.readBook("123"));
 		System.out.println(da.readBook("456"));
 		System.out.println(da.readBook("789"));
+		System.out.println(da.readBook("000"));
 		System.out.println("****************************************");
 				
 		System.out.println("Reading record forUsers:");
