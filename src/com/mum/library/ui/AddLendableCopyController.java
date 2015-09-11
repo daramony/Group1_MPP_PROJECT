@@ -56,7 +56,7 @@ public class AddLendableCopyController{
     @FXML
     private Label titleLabel;
 
-    private ObservableList<Book> memberData;
+    private ObservableList<Book> bookData;
     
     
     @FXML
@@ -86,7 +86,7 @@ public class AddLendableCopyController{
     void myRowClick(MouseEvent event) {
     	System.out.println("Select" + bookTableView.getSelectionModel().getSelectedIndex());
     	
-    	String isbn = memberData.get(bookTableView.getSelectionModel().getSelectedIndex()).getIsbn();
+    	String isbn = bookData.get(bookTableView.getSelectionModel().getSelectedIndex()).getIsbn();
     	DataAccess data = new DataAccessFacade();
     	HashMap<String, Book> map = data.readBooksMap();
   
@@ -112,6 +112,7 @@ public class AddLendableCopyController{
         			throw new Exception("All the fields is required!");
             	
             	int numberOfCopy = Integer.parseInt(numberOfCopyString);
+            	
             	for (int i=0; i<numberOfCopy; i++) {
             		addCopyBook(isbn);
             	}
@@ -200,16 +201,16 @@ public class AddLendableCopyController{
     
     private void loadTableData() {
     	
-		memberData = FXCollections.observableArrayList();
+		bookData = FXCollections.observableArrayList();
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, Book> map = da.readBooksMap();
 		Iterator it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry<String, Book> member = (Map.Entry) it.next();
-			memberData.add(member.getValue());
+			Map.Entry<String, Book> book = (Map.Entry) it.next();
+			bookData.add(book.getValue());
 		}
 		
-		bookTableView.setItems(memberData);
+		bookTableView.setItems(bookData);
 		isbnColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
 		titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		numberOfCopyColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("copiesNumString"));
