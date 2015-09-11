@@ -13,6 +13,30 @@ public class Book extends Publication implements Serializable {
 	private String copiesNumString;
 	private int maxLendDaysAllowed;
 	private int noOfCopies;
+	
+	
+//	public Book(String isbn, String title,List<Author> authors,int copyNum) {
+//		super(title);
+//		this.isbn=isbn;
+//		this.authors=authors;
+//		
+//		for(int i=0; i<copyNum; i++) {
+//			addCopy();
+//		}
+//		
+//	}
+	
+	public Book(String isbn, String title, int maxLendDaysAllowed, int noOfcopies, List<Author> authors) {
+		super(title);
+		this.isbn = isbn;
+		this.maxLendDaysAllowed = maxLendDaysAllowed;
+		this.authors = authors;
+		this.noOfCopies = noOfcopies;
+		for (int i = 0; i < noOfCopies; i++) {
+			addCopy();
+		}
+
+	}
 
 	
 	public String getCopiesNumString() {
@@ -41,28 +65,7 @@ public class Book extends Publication implements Serializable {
 		return strI;
 	}
 
-	public Book(String isbn, String title,List<Author> authors,int copyNum) {
-		super(title);
-		this.isbn=isbn;
-		this.authors=authors;
-		
-		for(int i=0; i<copyNum; i++) {
-			addCopy();
-		}
-		
-	}
-	
-	public Book(String isbn, String title, int maxLendDaysAllowed, int noOfcopies, List<Author> authors) {
-		super(title);
-		this.isbn = isbn;
-		this.maxLendDaysAllowed = maxLendDaysAllowed;
-		this.authors = authors;
-		this.noOfCopies = noOfcopies;
-		for (int i = 0; i < noOfCopies; i++) {
-			addCopy();
-		}
 
-	}
 	
 	public void addCopy() {
 		LendableCopy copy = new LendableCopy(this, this.copies.size()+1);

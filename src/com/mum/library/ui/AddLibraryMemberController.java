@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.mum.library.controller;
+package com.mum.library.ui;
 
 import com.mum.library.business.Address;
 import com.mum.library.business.LibraryMember;

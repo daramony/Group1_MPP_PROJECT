@@ -48,11 +48,11 @@ public class initData {
 		
 		List<Author> allAuthors = new ArrayList<Author>() {
 			{
-				add(new Author("Joe", "Thomas", "641-445-2123", addresses.get(0), "A happy man is he."));
-				add(new Author("Sandra", "Thomas", "641-445-2123", addresses.get(0), "A happy wife is she."));
-				add(new Author("Nirmal", "Pugh", "641-919-3223", addresses.get(1), "Thinker of thoughts."));
-				add(new Author("Andrew", "Cleveland", "976-445-2232", addresses.get(2), "Author of childrens' books."));
-				add(new Author("Sarah", "Connor", "123-422-2663", addresses.get(3), "Known for her clever style."));
+				add(new Author("Joe", "Thomas", "641-445-2123","A", addresses.get(0), "A happy man is he."));
+				add(new Author("Sandra", "Thomas", "641-445-2123","A", addresses.get(0), "A happy wife is she."));
+				add(new Author("Nirmal", "Pugh", "641-919-3223","A", addresses.get(1), "Thinker of thoughts."));
+				add(new Author("Andrew", "Cleveland", "976-445-2232","A", addresses.get(2), "Author of childrens' books."));
+				add(new Author("Sarah", "Connor", "123-422-2663","A", addresses.get(3), "Known for her clever style."));
 			}
 		};
 			
@@ -65,9 +65,9 @@ public class initData {
 		List<Author> aAuthors = new ArrayList<Author>();
 		aAuthors.add(allAuthors.get(0));
 		aAuthors.add(allAuthors.get(1));
-		Publication p1 = new Book("123","Gone with the Wind",aAuthors,1);
-		Publication p2 = new Book("456","Headley",aAuthors,2);
-		Publication p3 = new Book("789","Central",aAuthors,1);
+		Publication p1 = new Book("123","Gone with the Wind",14,1,aAuthors);
+		Publication p2 = new Book("456","Headley",30,2,aAuthors);
+		Publication p3 = new Book("789","Central",30,1,aAuthors);
 		
 		//add users
 		User user1=new User("101", "xyz", Auth.LIBRARIAN);
@@ -76,25 +76,16 @@ public class initData {
 				
 		
 		LendableCopy c1 = new LendableCopy(p1,1);
-		c1.setPublication(p1);
-		c1.setCopyId(1);
-		
 		LendableCopy c2 = new LendableCopy(p2,1);
-		c2.setPublication(p2);
-		c2.setCopyId(1);
-		
-		LendableCopy c4 = new LendableCopy(p2,2);
-		c4.setPublication(p2);
-		c4.setCopyId(2);
-		
-		
 		LendableCopy c3 = new LendableCopy(p3,1);
-		c3.setPublication(p3);
-		c3.setCopyId(1);
-		
+		LendableCopy c4 = new LendableCopy(p2,2);
+		LendableCopy c5 = new LendableCopy(p1,2);
+			
 		member1.checkout(c1, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
+		member1.checkout(c4, LocalDate.now(), LocalDate.now().plus(10, ChronoUnit.DAYS));
 		member2.checkout(c2, LocalDate.now(), LocalDate.now().plus(14, ChronoUnit.DAYS));
 		member3.checkout(c3, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
+		member3.checkout(c5, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
 		
 		//System.out.println("Location of 'user.dir':\n  "+DataAccessFacade.OUTPUT_DIR);
 		
