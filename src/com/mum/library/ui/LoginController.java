@@ -44,10 +44,15 @@ public class LoginController {
     @FXML
     void login(ActionEvent event) {
     	String username=TxtUsername.getText();
-    	String password=TxtPassword.getText();
+    	String password=TxtPassword.getText();    	 	
+    	loginRules(username,password);
     	
+    
+    
+    }
+
+    private void loginRules(String username, String password) {
     	DataAccess da=new DataAccessFacade();
-    	
     	if (da.readUserMap().get(username)!=null&&da.readUserMap().get(username).getPassword().equals(password)) {
     		try {   			
     	    	Stage stage = new Stage();
@@ -82,11 +87,10 @@ public class LoginController {
 			alert.setContentText("You input the wrong username or password,please try again!");
 			alert.showAndWait();
 		}
-    
-    
-    }
+		
+	}
 
-    @FXML
+	@FXML
     void initialize() {
         assert btnLogin != null : "fx:id=\"btnLogin\" was not injected: check your FXML file 'Login.fxml'.";
         assert TxtPassword != null : "fx:id=\"TxtPassword\" was not injected: check your FXML file 'Login.fxml'.";
